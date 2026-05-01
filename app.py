@@ -1,7 +1,6 @@
 import streamlit as st
 import base64
 import re
-import os
 from pypdf import PdfReader
 import matplotlib.pyplot as plt
 import graphviz
@@ -65,12 +64,12 @@ def analyze_skills(resume_skills: list, job_skills: list):
     return matched, missing, score
 
 
-# ✅ FIXED PDF DISPLAY (with fallback)
+# ✅ FIXED PDF HANDLING (NO CHROME BLOCK)
 def display_pdf(file_path: str):
     with open(file_path, "rb") as f:
         pdf_bytes = f.read()
 
-    # Download button (always works)
+    # Download button
     st.download_button(
         label="📥 Download Resume",
         data=pdf_bytes,
@@ -78,13 +77,10 @@ def display_pdf(file_path: str):
         mime="application/pdf"
     )
 
-    # Try preview (may be blocked by browser)
-    base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
-    pdf_display = f"""
-    <iframe src="data:application/pdf;base64,{base64_pdf}"
-    width="100%" height="500"></iframe>
-    """
-    st.markdown(pdf_display, unsafe_allow_html=True)
+    # Open in new tab (safe method)
+    b64 = base64.b64encode(pdf_bytes).decode()
+    href = f'<a href="data:application/pdf;base64,{b64}" target="_blank">📄 Open Resume in New Tab</a>'
+    st.markdown(href, unsafe_allow_html=True)
 
 
 # -------------------------------
@@ -130,8 +126,8 @@ if uploaded_file is not None and job_input:
         resume_data.get("Skills", []), job_skills
     )
 
-    # Preview
-    st.subheader("📄 Resume Preview")
+    # Preview section
+    st.subheader("📄 Resume Access")
     display_pdf("resume.pdf")
 
     # Results
