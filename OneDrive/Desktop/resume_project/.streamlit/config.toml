@@ -1,0 +1,10 @@
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
