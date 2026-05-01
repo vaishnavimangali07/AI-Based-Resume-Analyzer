@@ -25,7 +25,7 @@ The AI-Based Resume Analyzer is a Python-powered application designed to help jo
    streamlit run app.py
 
 ## 🌐 Live Demo
-(Will be added after deployment)
+🌐 Live App: https://your-app.streamlit.app
 
 ## 📂 GitHub Repository
 https://github.com/vaishnavimangali07/AI-Based-Resume-Analyzer
