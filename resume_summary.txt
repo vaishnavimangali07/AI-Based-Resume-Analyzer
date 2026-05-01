@@ -1,0 +1,7 @@
+Name: Name:m.vaishnavi
+Email: Vaishnavi@gmail.com
+Phone: 9908454231
+Skills: Python, Java, SQL, Machine Learning
+Education: btech, computer science
+Matched Skills: Python, SQL, Machine Learning
+Resume Score: 75.00%
